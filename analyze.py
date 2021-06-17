@@ -75,8 +75,21 @@ def usd_to_btc(usd: float) -> float:
 
 
 def get_break_even_price(principal: float, current_btc_holding: float) -> float:
-    # TODO: finish this
-    pass
+    """ Given your principal investment, and the amount of BTC you have from that,
+    it returns the price BTC needs to hit for you to break even on your investment. """
+
+    # only for the loop
+    btc_usd_price_incrementer = .01
+    btc_price = get_BTC_price()
+
+    btc_value = get_btc_value(current_btc_holding)
+
+    while btc_value < principal:
+        btc_price = btc_price + btc_usd_price_incrementer
+
+        btc_value = btc_price * current_btc_holding
+
+    return round(btc_price, 2)
 
 
 def main():
@@ -100,7 +113,7 @@ def main():
         btc_in_usd,
         PRINCIPAL,
         ( round(btc_in_usd - PRINCIPAL, 2) ),
-        0,
+        get_break_even_price(PRINCIPAL, MY_BITCOIN_AMT),
         hundred_k,
         two_hundred_k,
         three_hundred_k,
