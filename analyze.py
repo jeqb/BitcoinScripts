@@ -1,10 +1,21 @@
+import os
 from datetime import datetime
 from decimal import *
 import requests
+from dotenv import load_dotenv; load_dotenv()
+
+
+"""
+Keep a .env file with two environment variables:
+    PRINCIPAL=5000
+    MY_BITCOIN_AMT=0.0145684
+Replace with your own values.
+"""
+
 
 # GLOBALS
-PRINCIPAL = 3000
-MY_BITCOIN_AMT = 0.06095939
+PRINCIPAL = float(os.getenv('PRINCIPAL'))
+MY_BITCOIN_AMT = float(os.getenv('MY_BITCOIN_AMT'))
 
 
 def get_BTC_price() -> float:
