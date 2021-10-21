@@ -92,6 +92,19 @@ def get_break_even_price(principal: float, current_btc_holding: float) -> float:
     return round( ( principal / current_btc_holding ), 2)
 
 
+def calculate_asset_percentage_growth(principal: float, current_value: float) -> float:
+    """ Given your inisial investment, and how much the investment is worth now, calculate
+    the growth of your investment as a percentage. """
+    
+    value_difference = current_value - principal
+
+    growth = (value_difference / principal) * 100
+
+    rounded_growth = round(growth, 2)
+
+    return rounded_growth
+
+
 def main():
     """ The script does this """
 
@@ -113,6 +126,7 @@ def main():
         btc_in_usd,
         PRINCIPAL,
         ( round(btc_in_usd - PRINCIPAL, 2) ),
+        calculate_asset_percentage_growth(PRINCIPAL, btc_in_usd),
         get_break_even_price(PRINCIPAL, MY_BITCOIN_AMT),
         hundred_k,
         two_hundred_k,
@@ -129,13 +143,14 @@ def main():
     The value of your Bitcoin in usd is $ {3}
     Your total dollars invested are: $ {4}
     Your current profit is {5}
-    You will break even at a BTC price of: {6}
-    At $ 100K, it will be worth $ {7}
-    At $ 200K, it will be worth $ {8}
-    At $ 300K, it will be worth $ {9}
-    At $ 400K, it will be worth $ {10}
-    At $ 500K, it will be worth $ {11}
-    at $ 1Mil, it will be worth $ {12}
+    Your principal has grown by: {6}%
+    You will break even at a BTC price of: {7}
+    At $ 100K, it will be worth $ {8}
+    At $ 200K, it will be worth $ {9}
+    At $ 300K, it will be worth $ {10}
+    At $ 400K, it will be worth $ {11}
+    At $ 500K, it will be worth $ {12}
+    at $ 1Mil, it will be worth $ {13}
     """.format(*data)
 
     print(message)
