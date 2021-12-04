@@ -111,6 +111,10 @@ def main():
     validate_btc_value(MY_BITCOIN_AMT)
     btc_in_usd = get_btc_value(MY_BITCOIN_AMT)
 
+    twenty_k = calculate_future_valute(MY_BITCOIN_AMT, 20000)
+    thirty_k = calculate_future_valute(MY_BITCOIN_AMT, 30000)
+    fourty_k = calculate_future_valute(MY_BITCOIN_AMT, 40000)
+    fifty_k = calculate_future_valute(MY_BITCOIN_AMT, 50000)
     hundred_k = calculate_future_valute(MY_BITCOIN_AMT, 100000)
     two_hundred_k = calculate_future_valute(MY_BITCOIN_AMT, 200000)
     three_hundred_k = calculate_future_valute(MY_BITCOIN_AMT, 300000)
@@ -128,6 +132,10 @@ def main():
         ( round(btc_in_usd - PRINCIPAL, 2) ),
         calculate_asset_percentage_growth(PRINCIPAL, btc_in_usd),
         get_break_even_price(PRINCIPAL, MY_BITCOIN_AMT),
+        twenty_k,
+        thirty_k,
+        fourty_k,
+        fifty_k,
         hundred_k,
         two_hundred_k,
         three_hundred_k,
@@ -145,12 +153,16 @@ def main():
     Your current profit is {5}
     Your principal has grown by: {6}%
     You will break even at a BTC price of: {7}
-    At $ 100K, it will be worth $ {8}
-    At $ 200K, it will be worth $ {9}
-    At $ 300K, it will be worth $ {10}
-    At $ 400K, it will be worth $ {11}
-    At $ 500K, it will be worth $ {12}
-    at $ 1Mil, it will be worth $ {13}
+    At $ 20K, it will be worth $ {8}
+    At $ 30K, it will be worth $ {9}
+    At $ 40K, it will be worth $ {10}
+    At $ 50K, it will be worth $ {11}
+    At $ 100K, it will be worth $ {12}
+    At $ 200K, it will be worth $ {13}
+    At $ 300K, it will be worth $ {14}
+    At $ 400K, it will be worth $ {15}
+    At $ 500K, it will be worth $ {16}
+    at $ 1Mil, it will be worth $ {17}
     """.format(*data)
 
     print(message)
